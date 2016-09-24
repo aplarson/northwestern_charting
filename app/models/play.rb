@@ -14,6 +14,8 @@
 #  updated_at        :datetime         not null
 #  distance          :integer          not null
 #  formation_id      :integer          not null
+#  drive_id          :integer          not null
+#  quarterback_id    :integer          not null
 #
 
 class Play < ApplicationRecord
@@ -24,10 +26,12 @@ class Play < ApplicationRecord
   validates :line_of_scrimmage, inclusion: { in: 1..99 }
   validates :hash_mark, inclusion: { in: ["R", "L", "C"] }
 
-  belongs_to :game
+  belongs_to :drive
   belongs_to :formation
+  has_one :game, through: :drive
   has_one :run_play
   has_one :pass_play
+  has_one :quarterback, class_name: Player
 
   def success?
     if down == 1

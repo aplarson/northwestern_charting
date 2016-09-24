@@ -14,6 +14,8 @@
 #  updated_at        :datetime         not null
 #  distance          :integer          not null
 #  formation_id      :integer          not null
+#  drive_id          :integer          not null
+#  quarterback_id    :integer          not null
 #
 
 require 'rails_helper'

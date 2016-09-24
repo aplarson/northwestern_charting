@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: runs
+# Table name: drives
 #
 #  id         :integer          not null, primary key
-#  name       :string           not null
+#  game_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Run < ApplicationRecord
-  has_many :run_plays
-  has_many :ballcarriers, through: :run_plays
+class Drive < ApplicationRecord
+  belongs_to :game
+  has_many :plays
 end

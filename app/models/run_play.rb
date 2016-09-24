@@ -11,4 +11,7 @@
 #
 
 class RunPlay < ApplicationRecord
+  belongs_to :run
+  belongs_to :ballcarrier, class_name: Player
+  belongs_to :play
 end

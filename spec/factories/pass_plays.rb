@@ -5,7 +5,6 @@
 #  id              :integer          not null, primary key
 #  play_id         :integer          not null
 #  pass_concept_id :integer          not null
-#  quarterback_id  :integer          not null
 #  receiver_id     :integer
 #  thrown          :boolean          default(TRUE)
 #  complete        :boolean          default(FALSE)

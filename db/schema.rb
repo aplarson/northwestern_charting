@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924155925) do
+ActiveRecord::Schema.define(version: 20160924182604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20160924155925) do
     t.boolean  "fbs",        default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "drives", force: :cascade do |t|
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "formations", force: :cascade do |t|
@@ -59,7 +65,6 @@ ActiveRecord::Schema.define(version: 20160924155925) do
   create_table "pass_plays", force: :cascade do |t|
     t.integer  "play_id",                         null: false
     t.integer  "pass_concept_id",                 null: false
-    t.integer  "quarterback_id",                  null: false
     t.integer  "receiver_id"
     t.boolean  "thrown",          default: true
     t.boolean  "complete",        default: false
@@ -87,6 +92,8 @@ ActiveRecord::Schema.define(version: 20160924155925) do
     t.datetime "updated_at",        null: false
     t.integer  "distance",          null: false
     t.integer  "formation_id",      null: false
+    t.integer  "drive_id",          null: false
+    t.integer  "quarterback_id",    null: false
   end
 
   create_table "run_plays", force: :cascade do |t|
