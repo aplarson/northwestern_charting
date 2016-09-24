@@ -24,7 +24,10 @@ class Play < ApplicationRecord
   validates :line_of_scrimmage, inclusion: { in: 1..99 }
   validates :hash_mark, inclusion: { in: ["R", "L", "C"] }
 
+  belongs_to :game
   belongs_to :formation
+  has_one :run_play
+  has_one :pass_play
 
   def success?
     if down == 1
