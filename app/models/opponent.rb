@@ -10,4 +10,7 @@
 #
 
 class Opponent < ApplicationRecord
+  validates :name, presence: true
+
+  belongs_to :conference
 end

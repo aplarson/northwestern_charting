@@ -11,4 +11,7 @@
 #
 
 class Conference < ApplicationRecord
+  validates :name, presence: true
+
+  has_many :opponents
 end

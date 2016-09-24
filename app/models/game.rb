@@ -12,4 +12,6 @@
 #
 
 class Game < ApplicationRecord
+  belongs_to :opponent, :season
+  validates :date, :opponent, :season, presence: true
 end
