@@ -22,7 +22,8 @@ def create_play(row, game)
     game: game,
     formation: Formation.find_or_create_by(name: row[:Formation]),
     gain: row[:Gain],
-    quarterback: Player.find_or_create_by(last_name: row[:Quarterback])
+    quarterback: Player.find_or_create_by(last_name: row[:Quarterback]),
+    notes: row[:Notes])
 end
 
 def create_run(row, game)
@@ -35,7 +36,7 @@ end
 
 file = ARGV[0]
 
-game = Game.create(date: Date.parse(ARGV[2], season: Season.current, opponent: Opponent.find_or_create_by(name: ARGV[1])
+game = Game.create(date: Date.parse(ARGV[2]), season: Season.current, opponent: Opponent.find_or_create_by(name: ARGV[1]))
 
 current_drive_count  = 1
 current_drive = Drive.create(game: game)
