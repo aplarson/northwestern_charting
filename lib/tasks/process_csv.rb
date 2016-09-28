@@ -5,18 +5,22 @@ puts Rails.env
 
 def create_pass(row, drive)
   play = create_play(row, drive)
-  play.pass_play = PassPlay.new(
-    pass_concept: PassConcept.find_by(row["Play"]))
+  puts "Creating pass play for receiver:"
+  puts row["Ballcarrier"]
+  pass_play = PassPlay.create!(
+    pass_concept: PassConcept.find_by(name: row["Play"]),
+    play: play,
+    receiver: Player.find_by(last_name: row["Ballcarrier"]))
   if row["Complete"] == "T" || row["Complete"] == "F"
-    play.pass_play.thrown = true
-    play.pass_play.complete = row["Complete"] == "T"  
+    pass_play.thrown = true
+    pass_play.complete = row["Complete"] == "T"  
   end
-  play.save
+  pass_play.save
 end
 
 def create_play(row, drive)
   puts "Creating play"
-  play = Play.new(
+  Play.create!(
     quarter: row["Quarter"],
     time: row["Time"],
     line_of_scrimmage: row["LOS"],
@@ -29,18 +33,15 @@ def create_play(row, drive)
     quarterback: Player.find_by(last_name: row["Quarterback"]),
     notes: row["Notes"],
     formation_strength: row["Strength"])
-  play.valid?
-  puts play.errors
-  play.save
-  play
 end
 
 def create_run(row, drive)
   play = create_play(row, drive)
-  play.run_play = RunPlay.new(
+  run_play = RunPlay.create!(
     ballcarrier: Player.find_by(last_name: row["Ballcarrier"]),
     run: Run.find_by(name: row["Play"]),
-    direction: row["Direction"])
+    direction: row["Direction"],
+    play: play)
   play.save
 end
 

@@ -26,7 +26,6 @@ class Play < ApplicationRecord
   validates :quarter, inclusion: { in: 1..5 }
   validates :line_of_scrimmage, inclusion: { in: 1..99 }
   validates :hash_mark, inclusion: { in: ["R", "L", "C"] }
-  validates :formation_strength, inclusion: { in: ["R", "L", "N"] }
 
   belongs_to :drive
   belongs_to :formation
