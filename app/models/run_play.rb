@@ -18,4 +18,8 @@ class RunPlay < ApplicationRecord
   belongs_to :run
   belongs_to :ballcarrier, class_name: Player
   belongs_to :play
+
+  def gain
+    play.gain
+  end
 end
