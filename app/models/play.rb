@@ -33,7 +33,7 @@ class Play < ApplicationRecord
   has_one :game, through: :drive
   has_one :run_play
   has_one :pass_play
-  has_one :quarterback, class_name: Player
+  belongs_to :quarterback, class_name: Player
 
   def success?
     if down == 1
