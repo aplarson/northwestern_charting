@@ -19,6 +19,11 @@ class Player < ApplicationRecord
 
   # Returns the player's total yardage on rushing plays.
   def rushing_yards
-    
+    run_plays.includes(:play).reduce(0) { |sum, play| sum += play.gain }    
+  end
+
+  def rushing_success_rate
+    total_plays = run_plays.includes(:play)
+    total_plays.select { |play| play.play.success? }.count.to_f / total_plays.count
   end
 end
