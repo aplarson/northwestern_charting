@@ -12,6 +12,8 @@
 #
 
 class RunPlay < ApplicationRecord
+  validates :direction, :play, :run, :ballcarrier, presence: true
+
   belongs_to :run
   belongs_to :ballcarrier, class_name: Player
   belongs_to :play

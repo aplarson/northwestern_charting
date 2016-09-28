@@ -10,6 +10,7 @@
 
 class Season < ApplicationRecord
   validates :year, numericality: true
+
   has_many :games
   has_many :opponents, through: :games
 

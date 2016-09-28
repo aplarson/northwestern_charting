@@ -9,6 +9,8 @@
 #
 
 class Run < ApplicationRecord
+  validates :name, presence: true
+
   has_many :run_plays
   has_many :ballcarriers, through: :run_plays
 end

@@ -20,12 +20,13 @@
 #
 
 class Play < ApplicationRecord
-  validates :quarter, :time, :line_of_scrimmage, :down, :distance, :hash_mark, :gain, presence: true
+  validates :quarter, :time, :line_of_scrimmage, :down, :distance, :hash_mark, :gain, :formation, :drive, :quarterback, presence: true
 
   validates :down, inclusion: { in: [1, 2, 3, 4] }
   validates :quarter, inclusion: { in: 1..5 }
   validates :line_of_scrimmage, inclusion: { in: 1..99 }
   validates :hash_mark, inclusion: { in: ["R", "L", "C"] }
+  validates :formation_strength, inclusion: { in: ["R", "L", "N"] }
 
   belongs_to :drive
   belongs_to :formation

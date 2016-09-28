@@ -14,4 +14,8 @@ class Opponent < ApplicationRecord
 
   belongs_to :conference
   has_many :games
+
+  def independent?
+    conference == nil
+  end
 end
