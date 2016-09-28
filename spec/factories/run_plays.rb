@@ -8,6 +8,7 @@
 #  ballcarrier_id :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  direction      :string           not null
 #
 
 FactoryGirl.define do

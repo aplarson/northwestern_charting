@@ -3,7 +3,7 @@
 # Table name: drives
 #
 #  id         :integer          not null, primary key
-#  game_id    :integer
+#  game_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
