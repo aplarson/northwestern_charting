@@ -6,7 +6,7 @@ puts Rails.env
 def create_pass(row, game)
   play = create_play(row, game)
   play.pass_play = PassPlay.new(
-    pass_concept: PassConcept.find_or_create_by(row["Play"]))
+    pass_concept: PassConcept.find_by(row["Play"]))
   if row["Complete"] == "T" || row["Complete"] == "F"
     play.pass_play.thrown = true
     play.pass_play.complete = row["Complete"] == "T"  
@@ -23,7 +23,7 @@ def create_play(row, game)
     distance: row["Distance"],
     hash_mark: row["Hash"],
     game: game,
-    formation: Formation.find_or_create_by(name: row["Formation"]),
+    formation: Formation.find_by(name: row["Formation"]),
     gain: row["Gain"],
     quarterback: Player.find_by(last_name: row["Quarterback"]),
     notes: row["Notes"])
@@ -33,7 +33,7 @@ def create_run(row, game)
   play = create_play(row, game)
   play.run_play = RunPlay.new(
     ballcarrier: Player.find_by(last_name: row["Ballcarrier"]),
-    run: Run.find_or_create_by(name: row["Play"]))
+    run: Run.find_by(name: row["Play"]))
   play.save
 end
 
@@ -41,7 +41,7 @@ file = ARGV[0]
 
 puts "Creating game"
 puts ARGV
-game = Game.create(date: Date.parse(ARGV[2]), season: Season.current, opponent: Opponent.find_or_create_by(name: ARGV[1]))
+game = Game.create(date: Date.parse(ARGV[2]), season: Season.current, opponent: Opponent.find_by(name: ARGV[1]))
 
 puts "Processing drive 1"
 current_drive_count  = 1
