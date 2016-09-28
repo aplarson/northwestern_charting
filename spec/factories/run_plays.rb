@@ -3,9 +3,9 @@
 # Table name: run_plays
 #
 #  id             :integer          not null, primary key
-#  play_id        :integer
-#  run_id         :integer
-#  ballcarrier_id :integer
+#  play_id        :integer          not null
+#  run_id         :integer          not null
+#  ballcarrier_id :integer          not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  direction      :string           not null
