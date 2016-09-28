@@ -14,5 +14,8 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has an opponent" do
+    game = FactoryGirl.create(:game)
+    expect(game.opponent.name).to eq("Notre Dame")
+  end
 end

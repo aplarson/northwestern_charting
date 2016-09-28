@@ -11,8 +11,9 @@
 
 class Opponent < ApplicationRecord
   validates :name, presence: true
+  validates :name, uniqueness: true
 
-  belongs_to :conference
+  belongs_to :conference, optional: true
   has_many :games
 
   def independent?

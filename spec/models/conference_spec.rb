@@ -13,5 +13,9 @@
 require 'rails_helper'
 
 RSpec.describe Conference, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has teams" do
+    conference = FactoryGirl.create(:conference)
+    FactoryGirl.create(:opponent, conference: conference)
+    expect(conference.opponents.count).to eq(1)
+  end
 end

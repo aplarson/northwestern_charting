@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :conference do
-    
+    name "Big Ten"    
   end
 end

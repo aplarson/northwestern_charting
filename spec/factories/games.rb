@@ -13,6 +13,8 @@
 
 FactoryGirl.define do
   factory :game do
-    
+    date Date.today
+    opponent
+    season Season.current
   end
 end

@@ -12,5 +12,19 @@
 require 'rails_helper'
 
 RSpec.describe Opponent, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has games" do
+    opponent = FactoryGirl.create(:opponent)
+    FactoryGirl.create(:game, opponent: opponent)
+    expect(opponent.games.count).to eq(1)  
+  end
+
+  it "can have a conference" do
+    opponent = FactoryGirl.create(:opponent, conference: FactoryGirl.create(:conference))
+    expect(opponent.conference.name).to eq("Big Ten")
+  end
+
+  it "can be independent" do
+    opponent = FactoryGirl.create(:opponent)
+    expect(opponent.independent?).to be(true)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928031020) do
+ActiveRecord::Schema.define(version: 20160928160131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160928031020) do
     t.boolean  "fbs",        default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["name"], name: "index_conferences_on_name", unique: true, using: :btree
   end
 
   create_table "drives", force: :cascade do |t|
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 20160928031020) do
     t.integer  "conference_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["conference_id"], name: "index_opponents_on_conference_id", using: :btree
+    t.index ["name"], name: "index_opponents_on_name", unique: true, using: :btree
   end
 
   create_table "pass_concepts", force: :cascade do |t|

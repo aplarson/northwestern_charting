@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :drife, class: 'Drive' do
-    
+    game
   end
 end

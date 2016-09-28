@@ -11,6 +11,6 @@
 
 FactoryGirl.define do
   factory :opponent do
-    
+    name "Notre Dame"
   end
 end

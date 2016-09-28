@@ -21,6 +21,15 @@
 
 FactoryGirl.define do
   factory :play do
-    
+    drive
+    quarter 1
+    time "15:00"
+    down 1
+    line_of_scrimmage 25
+    distance 10
+    gain 10
+    hash_mark "R"
+    formation
+    quarterback
   end
 end
